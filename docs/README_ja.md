@@ -27,8 +27,6 @@ Typescriptに作て, npmで公開されるリポジトリです,<br/>
 ___
 ## どのようなプロジェクトがこのツールを使用しますか ?
 
-- 新しい映画情報を追跡するクライアントを作成したい場合。
-- ムービーファイルやビデオの管理に役立つツールを作成したい場合。.
 - cisco公式サイトに取り替えたい場合でも。 (( www
 - ...
 
@@ -53,38 +51,10 @@ Cisco_Data_Service.SetHeader({                  //ヘッダーの設定（オプ
     Referer: 'Cisco_Data_Service-ts',
   });
 
-async function main() {
-  let data = {};
-  try {
-    //using as a promise function
-    data = await Cisco_Data_Service.Movies.GetDetails(624860); 
-  } catch (err) {
-    console.error(err);
-  }
-  console.log(JSON.stringify(data));
-}
-main();
 ```
 ___
 
 ## これらのAPIをどのように認識しますか ?
-
-### 直感を使う:
-
-```Typescript
-data = await Cisco_Data_Service.Movies.GetDetails(624860);
-```
-![alt text](172714.png)
-
-```Typescript
-data = await Cisco_Data_Service.Collections.GetTranslations(654321, 'en-US');
-```
-![alt text](172927.png)
-
-```Typescript
-data = await Cisco_Data_Service.TVseasons.GetImages(54321, 65421, 'en-US');
-```
-![alt text](172331.png)
 
 
 

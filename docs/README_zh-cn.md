@@ -26,8 +26,6 @@
 ___
 ## 什么样的项目适合使用？
 
-- 如果您想制作一个客户端能够追踪新电影信息。
-- 如果您想制作一个工具来帮助您管理电影文件或视频。
 - 甚至你想制作一个程序取代cisco的官方网站。 ((笑
 - ...
 
@@ -52,39 +50,11 @@ Cisco_Data_Service.SetHeader({                  //设置标头（可选但推荐
     Referer: 'Cisco_Data_Service-ts',
   });
 
-async function main() {
-  let data = {};
-  try {
-    //using as a promise function
-    data = await Cisco_Data_Service.Movies.GetDetails(624860); 
-  } catch (err) {
-    console.error(err);
-  }
-  console.log(JSON.stringify(data));
-}
-main();
+
 ```
 ___
 
 ## 我该如何识别这些 API ?
-
-### 运用你的直觉:
-
-```Typescript
-data = await Cisco_Data_Service.Movies.GetDetails(624860);
-```
-![alt text](172714.png)
-
-```Typescript
-data = await Cisco_Data_Service.Collections.GetTranslations(654321, 'en-US');
-```
-![alt text](172927.png)
-
-```Typescript
-data = await Cisco_Data_Service.TVseasons.GetImages(54321, 65421, 'en-US');
-```
-![alt text](172331.png)
-
 
 
 # 加入开发 ?

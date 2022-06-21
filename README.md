@@ -48,23 +48,11 @@ cds.SetHeader({                  //Set header (optional but recommand)
     Referer: 'cisco_data_service',
   });
 
-async function main() {
-  let data = {};
-  try {
-    //using as a promise function
-    data = await cds.Movies.GetDetails(624860); 
-  } catch (err) {
-    console.error(err);
-  }
-  console.log(JSON.stringify(data));
-}
-main();
+
 ```
 ___
 
 ## How do I recognize these APIs ?
-
-### Use your intuition:
 
 
 

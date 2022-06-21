@@ -25,8 +25,6 @@
 ___
 ## 什麼樣的項目適合使用？
 
-- 如果您想製作一個客戶端能夠追踪新電影信息。
-- 如果您想製作一個工具來幫助您管理電影文件或視頻。
 - 甚至你想製作一個前端以取代cisco的官方網站。 ((笑
 - ...
 
@@ -51,38 +49,12 @@ Cisco_Data_Service.SetHeader({                  //設置標頭（可選但推薦
     Referer: 'Cisco_Data_Service-ts',
   });
 
-async function main() {
-  let data = {};
-  try {
-    //using as a promise function
-    data = await Cisco_Data_Service.Movies.GetDetails(624860); 
-  } catch (err) {
-    console.error(err);
-  }
-  console.log(JSON.stringify(data));
-}
-main();
 ```
 ___
 
 ## 我該如何識別這些 API ?
 
 ### 運用你的直覺:
-
-```Typescript
-data = await Cisco_Data_Service.Movies.GetDetails(624860);
-```
-![alt text](172714.png)
-
-```Typescript
-data = await Cisco_Data_Service.Collections.GetTranslations(654321, 'en-US');
-```
-![alt text](172927.png)
-
-```Typescript
-data = await Cisco_Data_Service.TVseasons.GetImages(54321, 65421, 'en-US');
-```
-![alt text](172331.png)
 
 
 

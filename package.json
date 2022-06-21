@@ -13,9 +13,9 @@
   "keywords": [
     "typescript",
     "cisco",
-    "wrapper-api",
-    "cisco-api",
-    "hacktoberfest"
+    "api-wrapper",
+    "cisco-support-api",
+    "npm-package"
   ],
   "repository": {
     "type": "git",
