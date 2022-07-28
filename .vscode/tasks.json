@@ -2,44 +2,13 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "npm",
-			"script": "fix",
-			"group": "build",
-			"problemMatcher": [],
-			"label": "npm: fix",
-			"detail": "tsc"
-		},
-		{
 			"type": "typescript",
 			"tsconfig": "tsconfig.json",
 			"problemMatcher": [
 				"$tsc"
 			],
 			"group": "build",
-			"label": "tsc: build - tsconfig.json"
-		},
-		{
-			"label": "tsc: build - preBuild.json",
-			"type": "shell",
-			"command":"tsc",
-			"args": ["-p","preBuild.json"],
-			
-			"group": "build"
-		},
-		{
-			"label": "npm: preBulid",
-			"dependsOrder": "sequence",
-			"dependsOn": [
-				"tsc: build - preBuild.json",
-			],
-		},
-		{
-			"type": "npm",
-			"script": "build",
-			"group": "build",
-			"problemMatcher": [],
-			"label": "npm: build",
-			"detail": "tsc -p tsconfig.json"
+			"label": "tsc: 建置 - tsconfig.json"
 		}
 	]
 }

@@ -134,11 +134,28 @@ const Validator = new Proxy(
  * Init: must call Init function first before using any other functions, or all func throw errors.
  * @param {string}token  enter your_token
  ********************/
-export function Init(token: string | undefined) {
-  if (token !== '' && token !== undefined) {
-    c_module.SetToken(token);
-  }
+export async function Init(input: {client_id: string; client_serect: string}) {
+  //
+  const axios = require('axios');
+  const qs = require('qs');
+  const data = qs.stringify({
+    grant_type: 'client_credentials',
+    client_id: input.client_id,
+    client_secret: input.client_serect,
+  });
+  const config = {
+    method: 'post',
+    url: 'https://cloudsso.cisco.com/as/token.oauth2',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    data: data,
+  };
+  const raw = await axios(config);
+  const rawdata = raw['data'];
+  c_module.SetToken(`${rawdata['token_type']} ${rawdata['access_token']}`);
 }
+
 /********************
  * Debug: get TOKEN
  * @returns {string} Common.TOKEN

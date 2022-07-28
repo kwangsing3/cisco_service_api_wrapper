@@ -5,8 +5,9 @@
  *
  * https://github.com/kwangsing3/Cisco_Data_Service
  */
-const axios = require('axios');
+import axios from 'axios';
 import * as c_module from './common';
+import {GET} from './utility/httpmethod';
 
 const baseURL = 'https://api.cisco.com/supporttools/eox/rest/5';
 
@@ -30,7 +31,7 @@ export class Eox {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/EOXByDates/{pageIndex}/{startDate}/{endDate}';
-    const arr = c_module.GetParams(this.GetCaseSummary);
+    const arr = c_module.GetParams(entity.GetCaseSummary);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       startDate: startDate,
       endDate: endDate,
@@ -38,7 +39,7 @@ export class Eox {
       eoxAttrib: eoxAttrib,
       responseencoding: responseencoding,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetEoXbyProductIDs(
@@ -48,13 +49,13 @@ export class Eox {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + '/EOXByProductID/{pageIndex}/{productID}';
-    const arr = c_module.GetParams(this.GetEoXbyProductIDs);
+    const arr = c_module.GetParams(entity.GetEoXbyProductIDs);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       productID: productID,
       pageIndex: pageIndex,
       responseencoding: responseencoding,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetEoXBySerialNumbers(
@@ -65,13 +66,13 @@ export class Eox {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/EOXBySerialNumber/{pageIndex}/{serialNumber}';
-    const arr = c_module.GetParams(this.GetEoXBySerialNumbers);
+    const arr = c_module.GetParams(entity.GetEoXBySerialNumbers);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       serialNumber: serialNumber,
       pageIndex: pageIndex,
       responseencoding: responseencoding,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetEoXbySoftwareReleaseStrings(
@@ -82,13 +83,14 @@ export class Eox {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/EOXBySWReleaseString/{pageIndex}/{input}';
-    const arr = c_module.GetParams(this.GetEoXbySoftwareReleaseStrings);
+    const arr = c_module.GetParams(entity.GetEoXbySoftwareReleaseStrings);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       input: input,
       pageIndex: pageIndex,
       responseencoding: responseencoding,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
 }
+const entity = new Eox();

@@ -5,7 +5,7 @@
  *
  * https://github.com/kwangsing3/Cisco_Data_Service
  */
-const axios = require('axios');
+import {GET} from './utility/httpmethod';
 import * as c_module from './common';
 
 const baseURL = 'https://api.cisco.com/software/suggestion/v2';
@@ -19,13 +19,13 @@ export class SoftwareSuggestion {
     let targetURL: string =
       baseURL + '/suggestions/software/productIds/{productIds}';
     const arr = c_module.GetParams(
-      this.GetSuggestedReleasesAndImagesbyProductIDs
+      entity.GetSuggestedReleasesAndImagesbyProductIDs
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       productIds: productIds,
       pageIndex: pageIndex,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSuggestedReleasesbyProductIDs(
@@ -35,12 +35,12 @@ export class SoftwareSuggestion {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/suggestions/releases/productIds/{productIds}';
-    const arr = c_module.GetParams(this.GetSuggestedReleasesbyProductIDs);
+    const arr = c_module.GetParams(entity.GetSuggestedReleasesbyProductIDs);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       productIds: productIds,
       pageIndex: pageIndex,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetCompatibleSoftwareReleasesbyProductIDs(
@@ -55,7 +55,7 @@ export class SoftwareSuggestion {
     let targetURL: string =
       baseURL + '/suggestions/compatible/productId/{basePID}';
     const arr = c_module.GetParams(
-      this.GetCompatibleSoftwareReleasesbyProductIDs
+      entity.GetCompatibleSoftwareReleasesbyProductIDs
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       productId: productId,
@@ -65,7 +65,7 @@ export class SoftwareSuggestion {
       supportedFeatures: supportedFeatures,
       supportedHardware: supportedHardware,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSuggestedReleasesAndImagesbyMDFIDs(
@@ -74,12 +74,14 @@ export class SoftwareSuggestion {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + '/suggestions/software/mdfIds/{mdfIds}';
-    const arr = c_module.GetParams(this.GetSuggestedReleasesAndImagesbyMDFIDs);
+    const arr = c_module.GetParams(
+      entity.GetSuggestedReleasesAndImagesbyMDFIDs
+    );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       mdfId: mdfId,
       pageIndex: pageIndex,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSuggestedReleasesbyMDFIDs(
@@ -88,12 +90,12 @@ export class SoftwareSuggestion {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + '/suggestions/releases/mdfIds/{mdfIds}';
-    const arr = c_module.GetParams(this.GetSuggestedReleasesbyMDFIDs);
+    const arr = c_module.GetParams(entity.GetSuggestedReleasesbyMDFIDs);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       mdfId: mdfId,
       pageIndex: pageIndex,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetCompatibleAndSuggestedSoftwareReleasesbyMDFID(
@@ -107,7 +109,7 @@ export class SoftwareSuggestion {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + '/suggestions/compatible/mdfId/{mdfId}';
     const arr = c_module.GetParams(
-      this.GetCompatibleAndSuggestedSoftwareReleasesbyMDFID
+      entity.GetCompatibleAndSuggestedSoftwareReleasesbyMDFID
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       mdfId: mdfId,
@@ -117,7 +119,8 @@ export class SoftwareSuggestion {
       supportedFeatures: supportedFeatures,
       supportedHardware: supportedHardware,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
 }
+const entity = new SoftwareSuggestion();

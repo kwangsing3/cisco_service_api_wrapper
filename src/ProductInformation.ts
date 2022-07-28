@@ -5,7 +5,7 @@
  *
  * https://github.com/kwangsing3/Cisco_Data_Service
  */
-const axios = require('axios');
+import {GET} from './utility/httpmethod';
 import * as c_module from './common';
 
 const baseURL = 'https://api.cisco.com/product/v1';
@@ -23,7 +23,7 @@ export class ProductInformation {
       serial_numbers: serial_numbers,
       page_index: page_index,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
 
@@ -38,7 +38,7 @@ export class ProductInformation {
       product_ids: product_ids,
       page_index: page_index,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetMDFbyProductId(
@@ -53,7 +53,8 @@ export class ProductInformation {
       product_ids: product_ids,
       page_index: page_index,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
 }
+const entity = new ProductInformation();

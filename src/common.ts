@@ -20,7 +20,7 @@ const Common = {
  * Set Token
  *********************/
 export function SetToken(token: string) {
-  Common.TOKEN = `Bearer ${token}`;
+  Common.TOKEN = `${token}`;
 }
 
 /********************
@@ -45,16 +45,20 @@ export function GetToken(): string {
  * @returns {string} Common.TOKEN
  ********************/
 export function GetHeader(): any {
-  return Common.HEADER;
+  return {
+    'User-Agent': '',
+    Referer: '',
+    Authorization: Common.TOKEN,
+  };
 }
 
 /*
   -axios-
 
-  axios.get(url, config)
+  GET(url, config)
   axios.delete(url, config)
   axios.head(url, config)
-  axios.post(url, data, config)
+  POST(url, data, config)
   axios.put(url, data, config)
   axios.patch(url, data, config)
 

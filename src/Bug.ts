@@ -5,7 +5,7 @@
  *
  * https://github.com/kwangsing3/Cisco_Data_Service
  */
-const axios = require('axios');
+import {GET} from './utility/httpmethod';
 import * as c_module from './common';
 
 const baseURL = 'https://api.cisco.com/bug/v2.0';
@@ -14,7 +14,7 @@ export class Bugs {
   async GetBugDetailsbyBugIDs(bug_ids: string): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + `/bugs/bug_ids/${bug_ids}`;
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetBugsbyBaseProductID(
@@ -41,7 +41,7 @@ export class Bugs {
       severity: severity,
       sort_by: sort_by,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetBugsbyBaseProductIDandSoftwareReleases(
@@ -74,7 +74,7 @@ export class Bugs {
       severity: severity,
       sort_by: sort_by,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSearchforBugsbyKeyword(
@@ -101,7 +101,7 @@ export class Bugs {
       severity: severity,
       sort_by: sort_by,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSearchBugsbyProductSeriesAndAffectedSoftware(
@@ -134,7 +134,7 @@ export class Bugs {
       severity: severity,
       sort_by: sort_by,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSearchBugsbyProductSeriesAndFixedInSoftware(
@@ -167,7 +167,7 @@ export class Bugs {
       severity: severity,
       sort_by: sort_by,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSearchBugsbyProductNameAndAffectedSoftware(
@@ -201,7 +201,7 @@ export class Bugs {
       sort_by: sort_by,
     });
 
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetSearchBugsbyProductNameAndFixedInSoftware(
@@ -234,7 +234,8 @@ export class Bugs {
       severity: severity,
       sort_by: sort_by,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
 }
+const entity = new Bugs();

@@ -5,7 +5,7 @@
  *
  * https://github.com/kwangsing3/Cisco_Data_Service
  */
-const axios = require('axios');
+import {GET, POST} from './utility/httpmethod';
 import * as c_module from './common';
 
 const baseURL = 'https://api.cisco.com/software/v4.0';
@@ -20,7 +20,7 @@ export class AutomatedSoftwareDistribution {
   }): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/metadata/pidrelease';
-    const data: any = await axios.post(targetURL, input, header);
+    const data: any = await POST(targetURL, input, header);
     return data.data;
   }
   async PostSoftwareReleaseByImage(input: {
@@ -31,19 +31,19 @@ export class AutomatedSoftwareDistribution {
   }): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/compliance/k9';
-    const data: any = await axios.post(targetURL, input, header);
+    const data: any = await POST(targetURL, input, header);
     return data.data;
   }
   async GetK9Agreement(): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/compliance/k9';
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetEULAAgreement(): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/compliance/eula';
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async PostK9Agreement(input: {
@@ -56,7 +56,7 @@ export class AutomatedSoftwareDistribution {
   }): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/compliance/k9';
-    const data: any = await axios.post(targetURL, input, header);
+    const data: any = await POST(targetURL, input, header);
     return data.data;
   }
   async PostEULAAgreement(input: {
@@ -66,7 +66,7 @@ export class AutomatedSoftwareDistribution {
   }): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/compliance/eula';
-    const data: any = await axios.post(targetURL, input, header);
+    const data: any = await POST(targetURL, input, header);
     return data.data;
   }
   async PostDownloadVariant(input: {
@@ -77,7 +77,7 @@ export class AutomatedSoftwareDistribution {
   }): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/download/pidimage';
-    const data: any = await axios.post(targetURL, input, header);
+    const data: any = await POST(targetURL, input, header);
     return data.data;
   }
   async PostSoftwareStatusVariant(input: {
@@ -85,7 +85,8 @@ export class AutomatedSoftwareDistribution {
   }): Promise<any> {
     const header = c_module.GetHeader();
     const targetURL: string = baseURL + '/metadata/images';
-    const data: any = await axios.post(targetURL, input, header);
+    const data: any = await POST(targetURL, input, header);
     return data.data;
   }
 }
+const entity = new AutomatedSoftwareDistribution();

@@ -5,7 +5,7 @@
  *
  * https://github.com/kwangsing3/Cisco_Data_Service
  */
-const axios = require('axios');
+import {GET} from './utility/httpmethod';
 import * as c_module from './common';
 
 const baseURL = 'https://api.cisco.com/sn2info/v2';
@@ -18,7 +18,7 @@ export class SerialNumberToInformation {
     targetURL = c_module.GetReturnString(targetURL, arr, {
       sr_no: sr_no,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetCoverageSummarybySerialNumber(
@@ -33,7 +33,7 @@ export class SerialNumberToInformation {
       sr_no: sr_no,
       page_index: page_index,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetCoverageSummarybyInstanceNumber(
@@ -48,7 +48,7 @@ export class SerialNumberToInformation {
       instance_no: instance_no,
       page_index: page_index,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetOrderableProductIdentifierbySerialNumber(
@@ -63,7 +63,7 @@ export class SerialNumberToInformation {
     targetURL = c_module.GetReturnString(targetURL, arr, {
       sr_no: sr_no,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetOwnerCoverageStatusbySerialNumber(sr_no: string): Promise<any> {
@@ -74,7 +74,8 @@ export class SerialNumberToInformation {
     targetURL = c_module.GetReturnString(targetURL, arr, {
       sr_no: sr_no,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
 }
+const entity = new SerialNumberToInformation();

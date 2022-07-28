@@ -5,7 +5,7 @@
  *
  * https://github.com/kwangsing3/Cisco_Data_Service
  */
-const axios = require('axios');
+import {GET} from './utility/httpmethod';
 import * as c_module from './common';
 
 const baseURL = 'https://api.cisco.com/case/v3';
@@ -17,22 +17,22 @@ export class Case {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + `/cases/case_ids/${case_ids}`;
-    const arr = c_module.GetParams(this.GetCaseSummary);
+    const arr = c_module.GetParams(entity.GetCaseSummary);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       case_ids: case_ids,
       sort_by: sort_by,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetCaseDetails(case_ids: string): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + `/cases/details/case_id/${case_ids}`;
-    const arr = c_module.GetParams(this.GetCaseDetails);
+    const arr = c_module.GetParams(entity.GetCaseDetails);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       case_ids: case_ids,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetCaseByContractID(
@@ -46,7 +46,7 @@ export class Case {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + `/cases/contracts/contract_ids/${contract_ids}`;
-    const arr = c_module.GetParams(this.GetCaseByContractID);
+    const arr = c_module.GetParams(entity.GetCaseByContractID);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       contract_ids: contract_ids,
       date_created_from: date_created_from,
@@ -55,7 +55,7 @@ export class Case {
       sort_by: sort_by,
       page_index: page_index,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
   async GetCaseByUserID(
@@ -68,7 +68,7 @@ export class Case {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + `/cases/users/user_ids/${user_ids}`;
-    const arr = c_module.GetParams(this.GetCaseByUserID);
+    const arr = c_module.GetParams(entity.GetCaseByUserID);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       user_ids: user_ids,
       date_created_from: date_created_from,
@@ -77,7 +77,8 @@ export class Case {
       sort_by: sort_by,
       page_index: page_index,
     });
-    const data: any = await axios.get(targetURL, header);
+    const data: any = await GET(targetURL, header);
     return data.data;
   }
 }
+const entity = new Case();
