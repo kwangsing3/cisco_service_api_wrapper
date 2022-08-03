@@ -1,6 +1,6 @@
 {
   "name": "cisco_data_service",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "It's a npm package and API wrapper implement in Typescript for Cisco Data APIs.",
   "main": "publish/src/cds.js",
   "types": "publish/src/cds.d.ts",

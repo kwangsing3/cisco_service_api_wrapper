@@ -14,7 +14,7 @@ export class SerialNumberToInformation {
   async GetCoverageStatusbySerialNumber(sr_no: string): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + '/coverage/status/serial_numbers/{sr_no}';
-    const arr = c_module.GetParams(this.GetCoverageStatusbySerialNumber);
+    const arr = c_module.GetParams(entity.GetCoverageStatusbySerialNumber);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       sr_no: sr_no,
     });
@@ -28,7 +28,7 @@ export class SerialNumberToInformation {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/coverage/summary/serial_numbers/{sr_no}';
-    const arr = c_module.GetParams(this.GetCoverageSummarybySerialNumber);
+    const arr = c_module.GetParams(entity.GetCoverageSummarybySerialNumber);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       sr_no: sr_no,
       page_index: page_index,
@@ -43,7 +43,7 @@ export class SerialNumberToInformation {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/coverage/summary/instance_numbers/{instance_no}';
-    const arr = c_module.GetParams(this.GetCoverageSummarybyInstanceNumber);
+    const arr = c_module.GetParams(entity.GetCoverageSummarybyInstanceNumber);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       instance_no: instance_no,
       page_index: page_index,
@@ -58,7 +58,7 @@ export class SerialNumberToInformation {
     let targetURL: string =
       baseURL + '/identifiers/orderable/serial_numbers/{sr_no}';
     const arr = c_module.GetParams(
-      this.GetOrderableProductIdentifierbySerialNumber
+      entity.GetOrderableProductIdentifierbySerialNumber
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       sr_no: sr_no,
@@ -70,7 +70,7 @@ export class SerialNumberToInformation {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/coverage/owner_status/serial_numbers/{sr_no}';
-    const arr = c_module.GetParams(this.GetOwnerCoverageStatusbySerialNumber);
+    const arr = c_module.GetParams(entity.GetOwnerCoverageStatusbySerialNumber);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       sr_no: sr_no,
     });

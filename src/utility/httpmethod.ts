@@ -18,7 +18,7 @@ export async function GET(url: string, header?: {}): Promise<any> {
   } catch (error: any) {
     console.log(error);
   }
-  return data['data'];
+  return data;
 }
 /**
  * POST method

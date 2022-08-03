@@ -32,7 +32,7 @@ export class Bugs {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + `/bugs/products/product_id/${base_pid}`;
-    const arr = c_module.GetParams(this.GetBugsbyBaseProductID);
+    const arr = c_module.GetParams(entity.GetBugsbyBaseProductID);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       base_pid: base_pid,
       page_index: page_index,
@@ -63,7 +63,7 @@ export class Bugs {
       baseURL +
       `/bugs/products/product_id/${base_pid}/software_releases/${software_releases}`;
     const arr = c_module.GetParams(
-      this.GetBugsbyBaseProductIDandSoftwareReleases
+      entity.GetBugsbyBaseProductIDandSoftwareReleases
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       base_pid: base_pid,
@@ -92,7 +92,7 @@ export class Bugs {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + '/bugs/keyword/cisco';
-    const arr = c_module.GetParams(this.GetSearchforBugsbyKeyword);
+    const arr = c_module.GetParams(entity.GetSearchforBugsbyKeyword);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       keyword: keyword,
       page_index: page_index,
@@ -123,7 +123,7 @@ export class Bugs {
       baseURL +
       `/bugs/product_series/${product_series}/affected_releases/${affected_releases}`;
     const arr = c_module.GetParams(
-      this.GetSearchBugsbyProductSeriesAndAffectedSoftware
+      entity.GetSearchBugsbyProductSeriesAndAffectedSoftware
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       product_series: product_series,
@@ -156,7 +156,7 @@ export class Bugs {
       baseURL +
       `/bugs/product_series/${product_series}/affected_releases/${fixed_in_releases}`;
     const arr = c_module.GetParams(
-      this.GetSearchBugsbyProductSeriesAndFixedInSoftware
+      entity.GetSearchBugsbyProductSeriesAndFixedInSoftware
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       product_series: product_series,
@@ -189,7 +189,7 @@ export class Bugs {
       baseURL +
       `/bugs/product_name/${product_name}/affected_releases${affected_releases}`;
     const arr = c_module.GetParams(
-      this.GetSearchBugsbyProductNameAndAffectedSoftware
+      entity.GetSearchBugsbyProductNameAndAffectedSoftware
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       product_name: product_name,
@@ -223,7 +223,7 @@ export class Bugs {
       baseURL +
       `/bugs/product_name/${product_name}/fixed_in_releases${fixed_in_releases}`;
     const arr = c_module.GetParams(
-      this.GetSearchBugsbyProductNameAndFixedInSoftware
+      entity.GetSearchBugsbyProductNameAndFixedInSoftware
     );
     targetURL = c_module.GetReturnString(targetURL, arr, {
       product_name: product_name,

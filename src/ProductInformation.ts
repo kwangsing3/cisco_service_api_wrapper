@@ -18,7 +18,7 @@ export class ProductInformation {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/information/serial_numbers/{serial_numbers}';
-    const arr = c_module.GetParams(this.GetInformationbySerialNumber);
+    const arr = c_module.GetParams(entity.GetInformationbySerialNumber);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       serial_numbers: serial_numbers,
       page_index: page_index,
@@ -33,7 +33,7 @@ export class ProductInformation {
   ): Promise<any> {
     const header = c_module.GetHeader();
     let targetURL: string = baseURL + '/information/product_ids/{product_ids}';
-    const arr = c_module.GetParams(this.GetInformationbyProductIdentifier);
+    const arr = c_module.GetParams(entity.GetInformationbyProductIdentifier);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       product_ids: product_ids,
       page_index: page_index,
@@ -48,7 +48,7 @@ export class ProductInformation {
     const header = c_module.GetHeader();
     let targetURL: string =
       baseURL + '/information/product_ids_mdf/{product_ids}';
-    const arr = c_module.GetParams(this.GetMDFbyProductId);
+    const arr = c_module.GetParams(entity.GetMDFbyProductId);
     targetURL = c_module.GetReturnString(targetURL, arr, {
       product_ids: product_ids,
       page_index: page_index,
