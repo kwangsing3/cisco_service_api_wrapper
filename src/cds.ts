@@ -310,7 +310,7 @@ export namespace CiscoSupportAPI {
      * @returns
      */
     export function GetBugDetailsbyBugIDs(bug_ids: string) {
-      return Validator.BugGetBugDetailsbyBugIDs(bug_ids);
+      return Validator.BugsGetBugDetailsbyBugIDs(bug_ids);
     }
     /**
      * Returns detailed information for the bugs associated with the specified base product ID.
@@ -336,7 +336,7 @@ export namespace CiscoSupportAPI {
         | 'support_case_count'
         | 'modified_date_earliest '
     ) {
-      return Validator.BugGetBugsbyBaseProductID(
+      return Validator.BugsGetBugsbyBaseProductID(
         base_pid,
         page_index,
         status,
@@ -371,7 +371,7 @@ export namespace CiscoSupportAPI {
         | 'support_case_count'
         | 'modified_date_earliest '
     ) {
-      return Validator.BugGetBugsbyBaseProductIDandSoftwareReleases(
+      return Validator.BugsGetBugsbyBaseProductIDandSoftwareReleases(
         base_pid,
         software_releases,
         page_index,
@@ -405,7 +405,7 @@ export namespace CiscoSupportAPI {
         | 'support_case_count'
         | 'modified_date_earliest '
     ) {
-      return Validator.BugGetSearchforBugsbyKeyword(
+      return Validator.BugsGetSearchforBugsbyKeyword(
         keyword,
         page_index,
         status,
@@ -440,7 +440,7 @@ export namespace CiscoSupportAPI {
         | 'support_case_count'
         | 'modified_date_earliest '
     ) {
-      return Validator.BugGetSearchBugsbyProductSeriesAndAffectedSoftware(
+      return Validator.BugsGetSearchBugsbyProductSeriesAndAffectedSoftware(
         product_series,
         affected_releases,
         page_index,
@@ -476,7 +476,7 @@ export namespace CiscoSupportAPI {
         | 'support_case_count'
         | 'modified_date_earliest '
     ) {
-      return Validator.BugGetSearchBugsbyProductSeriesAndFixedInSoftware(
+      return Validator.BugsGetSearchBugsbyProductSeriesAndFixedInSoftware(
         product_series,
         fixed_in_releases,
         page_index,
@@ -512,7 +512,7 @@ export namespace CiscoSupportAPI {
         | 'support_case_count'
         | 'modified_date_earliest '
     ) {
-      return Validator.BugGetSearchBugsbyProductNameAndAffectedSoftware(
+      return Validator.BugsGetSearchBugsbyProductNameAndAffectedSoftware(
         product_name,
         affected_releases,
         page_index,
@@ -548,7 +548,7 @@ export namespace CiscoSupportAPI {
         | 'support_case_count'
         | 'modified_date_earliest '
     ) {
-      return Validator.BugGetSearchBugsbyProductNameAndFixedInSoftware(
+      return Validator.BugsGetSearchBugsbyProductNameAndFixedInSoftware(
         product_name,
         fixed_in_releases,
         page_index,
