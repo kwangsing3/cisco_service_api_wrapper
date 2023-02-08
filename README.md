@@ -1,11 +1,11 @@
 
 <h3 align="right">
-<a href="https://github.com/kwangsing3/Cisco_Data_Service.git">Github page</a> |
-<a href="https://www.npmjs.com/package/cisco_data_service">npm page</a>  
+<a href="https://github.com/kwangsing3/cisco_service_api_wrapper.git">Github page</a> |
+<a href="https://www.npmjs.com/package/cisco_service_api_wrapper">npm page</a>  
 </h3>
 
 
-# Cisco_Data_Service
+# cisco_service_api_wrapper
 <h3>
 <p align="center">
 <a href="README.md"> English </a>|
@@ -16,14 +16,14 @@
 </h3>
 <br/>
 
-# What is [cisco_data_service](https://github.com/kwangsing3/cisco_data_service) ?
+# What is [cisco_service_api_wrapper](https://github.com/kwangsing3/cisco_service_api_wrapper) ?
 
-```cisco_data_service``` is a wrapper  for wrapping Cisco API from their doc and implementing in different program languages.
+```cisco_service_api_wrapper``` is a wrapper  for wrapping Cisco API from their doc and implementing in different program languages.
 
 It helps developer to request Movies or TV shows for infomation and metadata.<br/>
 
 This repo written by Typescript and publich in npm,<br/>
-see more  [here](https://github.com/kwangsing3/cisco_data_service).
+see more  [here](https://github.com/kwangsing3/cisco_service_api_wrapper).
 ___
 ## What kinds of projects are appropriated using with?
 
@@ -33,7 +33,7 @@ ___
 ### Install:
 
 ```bash
-$npm install cisco_data_service@latest
+$npm install cisco_service_api_wrapper@latest
 ```
 
 Before use this tool, make sure already have your [api_key](https://developers.themoviedb.org/3/getting-started/authentication).
@@ -45,7 +45,7 @@ import * as cds from 'cds'; // import as a namespace
 cds.Init('YOUR api_key');        //Always init your TOKEN_key first.
 cds.SetHeader({                  //Set header (optional but recommand)
     'User-Agent': 'npm package-dev',
-    Referer: 'cisco_data_service',
+    Referer: 'cisco_service_api_wrapper',
   });
 
 
@@ -59,7 +59,7 @@ ___
 
 # Join Development ?
 ```bash
-$git clone https://github.com/kwangsing3/Cisco_Data_Service.git &&
+$git clone https://github.com/kwangsing3/cisco_service_api_wrapper.git &&
 
 npm install ||
 

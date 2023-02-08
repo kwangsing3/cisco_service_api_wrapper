@@ -1,6 +1,6 @@
 {
-  "name": "cisco_data_service",
-  "version": "0.1.1",
+  "name": "cisco_service_api_wrapper",
+  "version": "0.1.3",
   "description": "It's a npm package and API wrapper implement in Typescript for Cisco Data APIs.",
   "main": "publish/src/cds.js",
   "types": "publish/src/cds.d.ts",
@@ -19,12 +19,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kwangsing3/Cisco_Data_Service.git.git"
+    "url": "git+https://github.com/kwangsing3/cisco_service_api_wrapper.git.git"
   },
   "bugs": {
-    "url": "https://github.com/kwangsing3/Cisco_Data_Service/issues"
+    "url": "https://github.com/kwangsing3/cisco_service_api_wrapper/issues"
   },
-  "homepage": "https://github.com/kwangsing3/Cisco_Data_Service#readme",
+  "homepage": "https://github.com/kwangsing3/cisco_service_api_wrapper#readme",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "lint": "gts lint",

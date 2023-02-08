@@ -3,7 +3,7 @@
  *
  * Copyright (c) kwangsing3
  *
- * https://github.com/kwangsing3/Cisco_Data_Service
+ * https://github.com/kwangsing3/cisco_service_api_wrapper
  *
  */
 import * as AutomatedSoftwareDistribution_module from './AutomatedSoftwareDistribution';
@@ -175,7 +175,7 @@ export function GetToken(): string {
  * @example
  * {
       'User-Agent': 'npm package-dev',
-      Referer: 'Cisco_Data_Service-ts',
+      Referer: 'cisco_service_api_wrapper-ts',
   }
  ********************/
 export function SetHeader(input: any) {

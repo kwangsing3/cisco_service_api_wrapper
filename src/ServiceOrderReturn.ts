@@ -3,7 +3,7 @@
  *
  * Copyright (c) kwangsing3
  *
- * https://github.com/kwangsing3/Cisco_Data_Service
+ * https://github.com/kwangsing3/cisco_service_api_wrapper
  */
 import {GET} from './utility/httpmethod';
 import * as c_module from './common';

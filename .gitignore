@@ -112,3 +112,5 @@ publish/src/index.*
 publish/src/index.d.ts
 publish/src/index.js
 publish/src/index.js.map
+
+src/index.ts
