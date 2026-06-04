@@ -1,76 +1,62 @@
-
-<h3 align="right">
-<a href="https://github.com/kwangsing3/cisco_service_api_wrapper.git">Github page</a> |
-<a href="https://www.npmjs.com/package/cisco_service_api_wrapper">npm page</a>  
-</h3>
-
-
 # cisco_service_api_wrapper
-<h3>
-<p align="center">
-<a href="README.md"> English </a>|
-<a href="/docs/README_ja.md"> 日本語 </a>|
-<a href="/docs/README_zh-tw.md"> 繁體中文 </a>|
-<a href="/docs/README_zh-cn.md"> 简体中文 </a>
-</p>
-</h3>
-<br/>
 
-# What is [cisco_service_api_wrapper](https://github.com/kwangsing3/cisco_service_api_wrapper) ?
+[![npm](https://img.shields.io/npm/v/cisco_service_api_wrapper)](https://www.npmjs.com/package/cisco_service_api_wrapper)
 
-```cisco_service_api_wrapper``` is a wrapper  for wrapping Cisco API from their doc and implementing in different program languages.
+**Cisco Support APIs** 的 TypeScript/Node.js 封裝套件，讓開發者無需處理底層 HTTP 細節即可查詢 Cisco 設備與服務資料。
 
-It helps developer to request Movies or TV shows for infomation and metadata.<br/>
+多語言文件：[English](README.md) ｜ [日本語](docs/README_ja.md) ｜ [繁體中文](docs/README_zh-tw.md) ｜ [简体中文](docs/README_zh-cn.md)
 
-This repo written by Typescript and publich in npm,<br/>
-see more  [here](https://github.com/kwangsing3/cisco_service_api_wrapper).
-___
-## What kinds of projects are appropriated using with?
+## 支援的 Cisco API 模組
 
-___
-## Useage
+| 模組 | 說明 |
+|------|------|
+| `Bug` | 查詢 Cisco 設備已知 Bug 與修復資訊 |
+| `Case` | 查詢 TAC 服務案例狀態 |
+| `Eox` | 查詢設備 End-of-Life / End-of-Sale 狀態 |
+| `ProductInformation` | 查詢產品資訊（型號、描述等）|
+| `SerialNumberToInformation` | 序號轉換設備詳細資訊 |
+| `ServiceOrderReturn` | 查詢 RMA 服務訂單狀態 |
+| `SoftwareSuggestion` | 查詢建議的軟體版本 |
+| `AutomatedSoftwareDistribution` | 自動化軟體下載 |
 
-### Install:
+## 安裝
 
 ```bash
-$npm install cisco_service_api_wrapper@latest
+npm install cisco_service_api_wrapper@latest
 ```
 
-Before use this tool, make sure already have your [api_key](https://developers.themoviedb.org/3/getting-started/authentication).
-<br/>
+## 使用方式
 
-``` Typescript
-import * as cds from 'cds'; // import as a namespace
+```typescript
+import * as cds from 'cisco_service_api_wrapper';
 
-cds.Init('YOUR api_key');        //Always init your TOKEN_key first.
-cds.SetHeader({                  //Set header (optional but recommand)
-    'User-Agent': 'npm package-dev',
-    Referer: 'cisco_service_api_wrapper',
-  });
+// 初始化（必須先呼叫）
+cds.Init('YOUR_CISCO_API_KEY');
 
+// 設定請求 Header（選用但建議）
+cds.SetHeader({
+  'User-Agent': 'my-app',
+  Referer: 'cisco_service_api_wrapper',
+});
 
+// 查詢序號對應的設備資訊
+const info = await cds.SerialNumberToInformation.getDeviceBySerialNumber('ABC123456');
+
+// 查詢 End-of-Life 狀態
+const eox = await cds.Eox.getEoxBySerialNumber('WS-C2960X-48FPS-L');
 ```
-___
 
-## How do I recognize these APIs ?
+## 取得 Cisco API Key
 
+前往 [Cisco DevNet](https://developer.cisco.com/site/support-apis/) 註冊並申請 Support API 的 Client ID 與 Client Secret。
 
+## 本地開發
 
-
-# Join Development ?
 ```bash
-$git clone https://github.com/kwangsing3/cisco_service_api_wrapper.git &&
-
-npm install ||
-
-touch src/index.ts 
+git clone https://github.com/kwangsing3/cisco_service_api_wrapper.git
+npm install
 ```
 
-___
-## Others
+## 授權
 
-*** leave a star,  hope this tool would give you a big help. ***
-
-THANK YOU :)
-
-Any request are welcome.
+MIT
