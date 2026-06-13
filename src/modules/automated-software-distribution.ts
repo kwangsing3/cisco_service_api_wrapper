@@ -3,20 +3,20 @@ import {GetHeader} from '../common';
 import {ep} from '../api/endpoints';
 
 export async function postSoftwareReleaseByPid(input: {
-  pid: string;
+  PID: string;
   currentReleaseVersion: string;
-  outputReleaseVersion: 'Latest' | 'Above' | string;
-  pageIndex: number;
-  perPage: number;
+  OutputReleaseVersion: 'Latest' | 'Above' | string;
+  pageIndex?: number;
+  perpage?: number;
 }): Promise<any> {
   return (await POST(ep.asd.softwareReleaseByPid, GetHeader(), input)).data;
 }
 
 export async function postSoftwareReleaseByImage(input: {
-  pid: string;
+  PID: string;
   imageNames: string[];
-  pageIndex: number;
-  perPage: number;
+  pageIndex?: number;
+  perpage?: number;
 }): Promise<any> {
   return (await POST(ep.asd.softwareReleaseByImage, GetHeader(), input)).data;
 }

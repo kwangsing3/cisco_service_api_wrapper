@@ -146,9 +146,9 @@ function registerTools(server: McpServer) {
     ({serialNumber, pageIndex}) => call(() => eox.getEoxBySerialNumbers(serialNumber, pageIndex)));
 
   server.tool('eox_getBySoftwareRelease',
-    'Get End-of-Life records for products associated with a software release string',
-    {input: z.string(), pageIndex: z.number()},
-    ({input, pageIndex}) => call(() => eox.getEoxBySoftwareRelease(input, pageIndex)));
+    'Get End-of-Life records for products associated with software release strings (up to 20, format: "version,OSType")',
+    {inputs: z.array(z.string()).max(20), pageIndex: z.number()},
+    ({inputs, pageIndex}) => call(() => eox.getEoxBySoftwareRelease(inputs, pageIndex)));
 
   // ── Product Information ───────────────────────────────────────────────────
   server.tool('product_getInfoBySerialNumbers',
@@ -244,21 +244,21 @@ function registerTools(server: McpServer) {
   server.tool('asd_getSoftwareReleaseByPid',
     'Get software release information for a device by PID and release version',
     {
-      pid: z.string(),
+      PID: z.string(),
       currentReleaseVersion: z.string(),
-      outputReleaseVersion: z.string().describe('Latest | Above | specific version'),
-      pageIndex: z.number(),
-      perPage: z.number(),
+      OutputReleaseVersion: z.string().describe('Latest | Above | specific version'),
+      pageIndex: z.number().optional(),
+      perpage: z.number().optional(),
     },
     (input) => call(() => asd.postSoftwareReleaseByPid(input)));
 
   server.tool('asd_getSoftwareReleaseByImage',
     'Get software release information for a device by PID and image names',
     {
-      pid: z.string(),
+      PID: z.string(),
       imageNames: z.array(z.string()),
-      pageIndex: z.number(),
-      perPage: z.number(),
+      pageIndex: z.number().optional(),
+      perpage: z.number().optional(),
     },
     (input) => call(() => asd.postSoftwareReleaseByImage(input)));
 

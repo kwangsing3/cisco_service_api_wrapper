@@ -46,7 +46,7 @@ export async function searchBugsByKeyword(
   opts?: BugQueryOpts
 ): Promise<any> {
   return (
-    await GET(buildUrl(ep.bug.byKeyword(), {keyword, ...opts}), GetHeader())
+    await GET(buildUrl(ep.bug.byKeyword(keyword), opts), GetHeader())
   ).data;
 }
 

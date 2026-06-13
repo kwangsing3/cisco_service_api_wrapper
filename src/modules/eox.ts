@@ -61,13 +61,15 @@ export async function getEoxBySerialNumbers(
 }
 
 export async function getEoxBySoftwareRelease(
-  input: string,
+  inputs: string[],
   pageIndex: number,
   responseencoding?: 'xml' | 'json'
 ): Promise<any> {
+  const queryParams: Record<string, string | undefined> = {responseencoding};
+  inputs.slice(0, 20).forEach((v, i) => { queryParams[`input${i + 1}`] = v; });
   return (
     await GET(
-      buildUrl(ep.eox.bySoftwareRelease(pageIndex, input), {responseencoding}),
+      buildUrl(ep.eox.bySoftwareRelease(pageIndex), queryParams),
       GetHeader()
     )
   ).data;

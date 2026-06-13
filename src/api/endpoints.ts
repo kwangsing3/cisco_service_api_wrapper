@@ -1,18 +1,18 @@
-const BUG  = 'https://api.cisco.com/bug/v2.0';
-const CASE = 'https://api.cisco.com/case/v3';
-const EOX  = 'https://api.cisco.com/supporttools/eox/rest/5';
-const PROD = 'https://api.cisco.com/product/v1';
-const SN   = 'https://api.cisco.com/sn2info/v2';
-const RMA  = 'https://api.cisco.com/return/v1.0';
-const SW   = 'https://api.cisco.com/software/suggestion/v2';
-const ASD  = 'https://api.cisco.com/software/v4.0';
+const BUG  = 'https://apix.cisco.com/bug/v2.0';
+const CASE = 'https://apix.cisco.com/case/v3';
+const EOX  = 'https://apix.cisco.com/supporttools/eox/rest/5';
+const PROD = 'https://apix.cisco.com/product/v1';
+const SN   = 'https://apix.cisco.com/sn2info/v2';
+const RMA  = 'https://apix.cisco.com/return/v1.0';
+const SW   = 'https://apix.cisco.com/software/suggestion/v2';
+const ASD  = 'https://apix.cisco.com/software/v4.0';
 
 export const ep = {
   bug: {
     byBugIds:                       (ids: string)                        => `${BUG}/bugs/bug_ids/${ids}`,
     byProductId:                    (pid: string)                        => `${BUG}/bugs/products/product_id/${pid}`,
     byProductIdAndRelease:          (pid: string, release: string)       => `${BUG}/bugs/products/product_id/${pid}/software_releases/${release}`,
-    byKeyword:                                                           () => `${BUG}/bugs/keyword/cisco`,
+    byKeyword:                      (keyword: string)                    => `${BUG}/bugs/keyword/${keyword}`,
     byProductSeriesAffectedRelease: (series: string, release: string)    => `${BUG}/bugs/product_series/${series}/affected_releases/${release}`,
     byProductSeriesFixedRelease:    (series: string, release: string)    => `${BUG}/bugs/product_series/${series}/fixed_in_releases/${release}`,
     byProductNameAffectedRelease:   (name: string, release: string)      => `${BUG}/bugs/product_name/${name}/affected_releases/${release}`,
@@ -28,7 +28,7 @@ export const ep = {
     byDates:           (page: number, start: string, end: string) => `${EOX}/EOXByDates/${page}/${start}/${end}`,
     byProductIds:      (page: number, ids: string)                => `${EOX}/EOXByProductID/${page}/${ids}`,
     bySerialNumbers:   (page: number, sns: string)                => `${EOX}/EOXBySerialNumber/${page}/${sns}`,
-    bySoftwareRelease: (page: number, input: string)              => `${EOX}/EOXBySWReleaseString/${page}/${input}`,
+    bySoftwareRelease: (page: number)                             => `${EOX}/EOXBySWReleaseString/${page}`,
   },
   product: {
     bySerialNumbers: (sns: string) => `${PROD}/information/serial_numbers/${sns}`,
@@ -56,7 +56,7 @@ export const ep = {
   },
   asd: {
     softwareReleaseByPid:   `${ASD}/metadata/pidrelease`,
-    softwareReleaseByImage: `${ASD}/compliance/k9`,
+    softwareReleaseByImage: `${ASD}/metadata/pidimage`,
     k9Agreement:            `${ASD}/compliance/k9`,
     eulaAgreement:          `${ASD}/compliance/eula`,
     downloadVariant:        `${ASD}/download/pidimage`,
