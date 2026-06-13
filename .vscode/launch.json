@@ -6,15 +6,13 @@
     "configurations": [
         {
             "name": "Launch Program",
-            "program": "${workspaceFolder}/dist/src/index.js",
+            "program": "${workspaceFolder}/build/src/cds.js",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "type": "node",
-            "preLaunchTask": "tsc: 建置 - tsconfig.json",
-            "args": ["--flag=hpe"]
-            
+            "preLaunchTask": "tsc: 建置 - tsconfig.json"
         }
     ]
 }
