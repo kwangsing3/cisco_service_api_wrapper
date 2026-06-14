@@ -4,7 +4,6 @@ import {SSEServerTransport} from '@modelcontextprotocol/sdk/server/sse.js';
 import {StreamableHTTPServerTransport} from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import {createServer, type IncomingMessage, type ServerResponse} from 'node:http';
 import {z} from 'zod';
-import {Init} from './cds';
 import * as asd from './modules/automated-software-distribution';
 import * as bug from './modules/bug';
 import * as cas from './modules/case';
@@ -337,18 +336,8 @@ async function startStreamableHTTP(server: McpServer, port: number) {
 // ── Entry point ───────────────────────────────────────────────────────────────
 
 async function main() {
-  const clientId = process.env['CISCO_CLIENT_ID'];
-  const clientSecret = process.env['CISCO_CLIENT_SECRET'];
-
-  if (!clientId || !clientSecret) {
+  if (!process.env['CISCO_CLIENT_ID'] || !process.env['CISCO_CLIENT_SECRET']) {
     console.error('Error: CISCO_CLIENT_ID and CISCO_CLIENT_SECRET environment variables are required');
-    process.exit(1);
-  }
-
-  try {
-    await Init({client_id: clientId, client_serect: clientSecret});
-  } catch (err) {
-    console.error('Failed to authenticate with Cisco API:', err);
     process.exit(1);
   }
 

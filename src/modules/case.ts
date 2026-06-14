@@ -16,12 +16,12 @@ export async function getCaseSummary(
   sort_by?: 'UPDATED_DATE' | 'STATUS'
 ): Promise<any> {
   return (
-    await GET(buildUrl(ep.case.summary(case_ids), {sort_by}), GetHeader())
+    await GET(buildUrl(ep.case.summary(case_ids), {sort_by}), await GetHeader())
   ).data;
 }
 
 export async function getCaseDetails(case_id: string): Promise<any> {
-  return (await GET(ep.case.details(case_id), GetHeader())).data;
+  return (await GET(ep.case.details(case_id), await GetHeader())).data;
 }
 
 export async function getCasesByContractId(
@@ -29,7 +29,7 @@ export async function getCasesByContractId(
   opts?: CaseQueryOpts
 ): Promise<any> {
   return (
-    await GET(buildUrl(ep.case.byContract(contract_ids), opts), GetHeader())
+    await GET(buildUrl(ep.case.byContract(contract_ids), opts), await GetHeader())
   ).data;
 }
 
@@ -37,6 +37,6 @@ export async function getCasesByUserId(
   user_ids: string,
   opts?: CaseQueryOpts
 ): Promise<any> {
-  return (await GET(buildUrl(ep.case.byUser(user_ids), opts), GetHeader()))
+  return (await GET(buildUrl(ep.case.byUser(user_ids), opts), await GetHeader()))
     .data;
 }

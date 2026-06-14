@@ -27,7 +27,7 @@ export async function getEoxByDates(
         eoxAttrib,
         responseencoding,
       }),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -40,7 +40,7 @@ export async function getEoxByProductIds(
   return (
     await GET(
       buildUrl(ep.eox.byProductIds(pageIndex, productID), {responseencoding}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -55,7 +55,7 @@ export async function getEoxBySerialNumbers(
       buildUrl(ep.eox.bySerialNumbers(pageIndex, serialNumber), {
         responseencoding,
       }),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -70,7 +70,7 @@ export async function getEoxBySoftwareRelease(
   return (
     await GET(
       buildUrl(ep.eox.bySoftwareRelease(pageIndex), queryParams),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }

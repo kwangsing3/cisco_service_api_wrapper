@@ -6,19 +6,16 @@
  * https://github.com/kwangsing3/cisco_service_api_wrapper
  *
  */
+import GetToken from './api/getToken';
+
 export const header = {
   'User-Agent': '',
   Referer: '',
 };
 
 const Common = {
-  TOKEN: '',
   HEADER: header,
 };
-
-export function SetToken(token: string) {
-  Common.TOKEN = `${token}`;
-}
 
 export function SetHeader(input: any) {
   if (Object.prototype.hasOwnProperty.call(input, 'User-Agent'))
@@ -27,14 +24,11 @@ export function SetHeader(input: any) {
     Common.HEADER['Referer'] = input['Referer'];
 }
 
-export function GetToken(): string {
-  return Common.TOKEN;
-}
-
-export function GetHeader(): Record<string, string> {
+export async function GetHeader(): Promise<Record<string, string>> {
+  const token = await GetToken();
   return {
     'User-Agent': Common.HEADER['User-Agent'],
     Referer: Common.HEADER['Referer'],
-    Authorization: Common.TOKEN,
+    Authorization: `Bearer ${token}`,
   };
 }

@@ -13,13 +13,13 @@ type RmaQueryOpts = {
 export async function getRmaDetailsByRmaNumber(
   rma_numbers: number
 ): Promise<any> {
-  return (await GET(ep.rma.byRmaNumber(rma_numbers), GetHeader())).data;
+  return (await GET(ep.rma.byRmaNumber(rma_numbers), await GetHeader())).data;
 }
 
 export async function getRmasByUserId(
   user_ids: string,
   opts?: RmaQueryOpts
 ): Promise<any> {
-  return (await GET(buildUrl(ep.rma.byUserId(user_ids), opts), GetHeader()))
+  return (await GET(buildUrl(ep.rma.byUserId(user_ids), opts), await GetHeader()))
     .data;
 }

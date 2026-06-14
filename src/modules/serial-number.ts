@@ -6,7 +6,7 @@ import {buildUrl} from '../utility/query';
 export async function getCoverageStatusBySerialNumbers(
   sr_no: string
 ): Promise<any> {
-  return (await GET(ep.serialNumber.coverageStatus(sr_no), GetHeader())).data;
+  return (await GET(ep.serialNumber.coverageStatus(sr_no), await GetHeader())).data;
 }
 
 export async function getCoverageSummaryBySerialNumbers(
@@ -16,7 +16,7 @@ export async function getCoverageSummaryBySerialNumbers(
   return (
     await GET(
       buildUrl(ep.serialNumber.coverageSummary(sr_no), {page_index}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -28,7 +28,7 @@ export async function getCoverageSummaryByInstanceNumbers(
   return (
     await GET(
       buildUrl(ep.serialNumber.instanceSummary(instance_no), {page_index}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -36,12 +36,12 @@ export async function getCoverageSummaryByInstanceNumbers(
 export async function getOrderableIdentifiersBySerialNumbers(
   sr_no: string
 ): Promise<any> {
-  return (await GET(ep.serialNumber.orderableIdentifiers(sr_no), GetHeader()))
+  return (await GET(ep.serialNumber.orderableIdentifiers(sr_no), await GetHeader()))
     .data;
 }
 
 export async function getOwnerCoverageStatusBySerialNumbers(
   sr_no: string
 ): Promise<any> {
-  return (await GET(ep.serialNumber.ownerStatus(sr_no), GetHeader())).data;
+  return (await GET(ep.serialNumber.ownerStatus(sr_no), await GetHeader())).data;
 }

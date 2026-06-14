@@ -17,14 +17,14 @@ type BugQueryOpts = {
 };
 
 export async function getBugDetailsById(bug_ids: string): Promise<any> {
-  return (await GET(ep.bug.byBugIds(bug_ids), GetHeader())).data;
+  return (await GET(ep.bug.byBugIds(bug_ids), await await GetHeader())).data;
 }
 
 export async function getBugsByProductId(
   base_pid: string,
   opts?: BugQueryOpts
 ): Promise<any> {
-  return (await GET(buildUrl(ep.bug.byProductId(base_pid), opts), GetHeader()))
+  return (await GET(buildUrl(ep.bug.byProductId(base_pid), opts), await GetHeader()))
     .data;
 }
 
@@ -36,7 +36,7 @@ export async function getBugsByProductIdAndRelease(
   return (
     await GET(
       buildUrl(ep.bug.byProductIdAndRelease(base_pid, software_releases), opts),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -46,7 +46,7 @@ export async function searchBugsByKeyword(
   opts?: BugQueryOpts
 ): Promise<any> {
   return (
-    await GET(buildUrl(ep.bug.byKeyword(keyword), opts), GetHeader())
+    await GET(buildUrl(ep.bug.byKeyword(keyword), opts), await GetHeader())
   ).data;
 }
 
@@ -64,7 +64,7 @@ export async function searchBugsByProductSeriesAndAffectedRelease(
         ),
         opts
       ),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -80,7 +80,7 @@ export async function searchBugsByProductSeriesAndFixedRelease(
         ep.bug.byProductSeriesFixedRelease(product_series, fixed_in_releases),
         opts
       ),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -96,7 +96,7 @@ export async function searchBugsByProductNameAndAffectedRelease(
         ep.bug.byProductNameAffectedRelease(product_name, affected_releases),
         opts
       ),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -112,7 +112,7 @@ export async function searchBugsByProductNameAndFixedRelease(
         ep.bug.byProductNameFixedRelease(product_name, fixed_in_releases),
         opts
       ),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }

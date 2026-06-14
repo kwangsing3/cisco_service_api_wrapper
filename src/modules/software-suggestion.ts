@@ -18,7 +18,7 @@ export async function getSuggestedReleasesAndImagesByProductIds(
   return (
     await GET(
       buildUrl(ep.software.suggestedByProductIds(productIds), {pageIndex}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -30,7 +30,7 @@ export async function getSuggestedReleasesByProductIds(
   return (
     await GET(
       buildUrl(ep.software.releasesByProductIds(productIds), {pageIndex}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -42,7 +42,7 @@ export async function getCompatibleReleasesByProductId(
   return (
     await GET(
       buildUrl(ep.software.compatibleByProductId(productId), opts),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -54,7 +54,7 @@ export async function getSuggestedReleasesAndImagesByMdfIds(
   return (
     await GET(
       buildUrl(ep.software.suggestedByMdfIds(mdfId), {pageIndex}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -66,7 +66,7 @@ export async function getSuggestedReleasesByMdfIds(
   return (
     await GET(
       buildUrl(ep.software.releasesByMdfIds(mdfId), {pageIndex}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -76,6 +76,6 @@ export async function getCompatibleAndSuggestedReleasesByMdfId(
   opts?: CompatibleOpts & {supportedFeatures?: 'orderdate' | 'status'}
 ): Promise<any> {
   return (
-    await GET(buildUrl(ep.software.compatibleByMdfId(mdfId), opts), GetHeader())
+    await GET(buildUrl(ep.software.compatibleByMdfId(mdfId), opts), await GetHeader())
   ).data;
 }

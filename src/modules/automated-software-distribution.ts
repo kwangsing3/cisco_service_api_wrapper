@@ -9,7 +9,7 @@ export async function postSoftwareReleaseByPid(input: {
   pageIndex?: number;
   perpage?: number;
 }): Promise<any> {
-  return (await POST(ep.asd.softwareReleaseByPid, GetHeader(), input)).data;
+  return (await POST(ep.asd.softwareReleaseByPid, await GetHeader(), input)).data;
 }
 
 export async function postSoftwareReleaseByImage(input: {
@@ -18,15 +18,15 @@ export async function postSoftwareReleaseByImage(input: {
   pageIndex?: number;
   perpage?: number;
 }): Promise<any> {
-  return (await POST(ep.asd.softwareReleaseByImage, GetHeader(), input)).data;
+  return (await POST(ep.asd.softwareReleaseByImage, await GetHeader(), input)).data;
 }
 
 export async function getK9Agreement(): Promise<any> {
-  return (await GET(ep.asd.k9Agreement, GetHeader())).data;
+  return (await GET(ep.asd.k9Agreement, await GetHeader())).data;
 }
 
 export async function getEulaAgreement(): Promise<any> {
-  return (await GET(ep.asd.eulaAgreement, GetHeader())).data;
+  return (await GET(ep.asd.eulaAgreement, await GetHeader())).data;
 }
 
 export async function postK9Agreement(input: {
@@ -37,7 +37,7 @@ export async function postK9Agreement(input: {
   busFunction: 'COMM_OR_CIVIL';
   govMilCountries: 'GOV_OR_MIL';
 }): Promise<any> {
-  return (await POST(ep.asd.k9Agreement, GetHeader(), input)).data;
+  return (await POST(ep.asd.k9Agreement, await GetHeader(), input)).data;
 }
 
 export async function postEulaAgreement(input: {
@@ -45,7 +45,7 @@ export async function postEulaAgreement(input: {
   declineComments: number;
   fileNames: string;
 }): Promise<any> {
-  return (await POST(ep.asd.eulaAgreement, GetHeader(), input)).data;
+  return (await POST(ep.asd.eulaAgreement, await GetHeader(), input)).data;
 }
 
 export async function postDownloadVariant(input: {
@@ -54,11 +54,11 @@ export async function postDownloadVariant(input: {
   metadataTransId: string;
   imageGuids: string[];
 }): Promise<any> {
-  return (await POST(ep.asd.downloadVariant, GetHeader(), input)).data;
+  return (await POST(ep.asd.downloadVariant, await GetHeader(), input)).data;
 }
 
 export async function postSoftwareStatus(input: {
   imageNames: string[];
 }): Promise<any> {
-  return (await POST(ep.asd.softwareStatus, GetHeader(), input)).data;
+  return (await POST(ep.asd.softwareStatus, await GetHeader(), input)).data;
 }

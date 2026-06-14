@@ -10,7 +10,7 @@ export async function getInfoBySerialNumbers(
   return (
     await GET(
       buildUrl(ep.product.bySerialNumbers(serial_numbers), {page_index}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -22,7 +22,7 @@ export async function getInfoByProductIds(
   return (
     await GET(
       buildUrl(ep.product.byProductIds(product_ids), {page_index}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }
@@ -34,7 +34,7 @@ export async function getMdfByProductIds(
   return (
     await GET(
       buildUrl(ep.product.mdfByProductIds(product_ids), {page_index}),
-      GetHeader()
+      await GetHeader()
     )
   ).data;
 }

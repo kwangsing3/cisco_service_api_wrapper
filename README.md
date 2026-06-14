@@ -66,6 +66,34 @@ Catalyst 9300 在 IOS-XE 17.9.1 有哪些 Open 的 Bug，severity 1 到 3？
 查詢產品 WS-C2960X-48FPS-L 的 End-of-Life 資訊
 ```
 
+### ⚠️ 補充：Windows Store（MSIX）版 Claude Desktop 的 config 路徑陷阱
+
+如果你的 Claude Desktop 是從 **Microsoft Store** 安裝的（MSIX 封裝版），它跑在沙箱容器中並有**檔案系統虛擬化**，**不會**讀取上面標準的 `%APPDATA%\Claude\claude_desktop_config.json`。
+
+症狀：改了 config 卻完全沒生效、重啟也不出現工具、且 `%APPDATA%\Claude` 下**不會生成 `logs` 資料夾**。
+
+Store 版實際讀取的 config 在虛擬化路徑：
+
+```
+%LOCALAPPDATA%\Packages\Claude_<發行者雜湊>\LocalCache\Roaming\Claude\claude_desktop_config.json
+```
+
+例如：`C:\Users\<你>\AppData\Local\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json`
+
+確認你的封裝資料夾名稱（PowerShell）：
+
+```powershell
+# 找出 Claude Desktop 執行檔路徑，若在 WindowsApps 下即為 Store 版
+(Get-Process claude | Select-Object -First 1).Path
+
+# 列出實際的封裝 config 路徑
+Get-ChildItem "$env:LOCALAPPDATA\Packages\Claude_*\LocalCache\Roaming\Claude\claude_desktop_config.json"
+```
+
+把 `mcpServers` 設定加進**這個**檔案，而非標準路徑。獨立安裝版（從 [claude.ai](https://claude.ai/download) 下載的 .exe）則使用標準的 `%APPDATA%\Claude\` 路徑，不受此影響。
+
+修改後務必**完全結束 Claude Desktop 再重開**（它會縮到系統匣，關視窗不算）：右鍵系統匣圖示 → Quit，或執行 `Stop-Process -Name claude -Force`。
+
 ## 其他連線方式
 
 除了 stdio（Claude Desktop 預設），也支援網路模式：
